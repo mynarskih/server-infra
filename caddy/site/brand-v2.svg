@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title">
+<title id="title">serwerbb.win</title>
+<rect x="8" y="8" width="240" height="240" rx="40" fill="#000000" stroke="#292d30" stroke-width="2"/>
+<path d="M52 96c0-15 12-28 28-28h42l17 20h37c16 0 28 12 28 28v57c0 16-12 28-28 28H80c-16 0-28-12-28-28V96Z" fill="#000000" stroke="#f0f0f0" stroke-width="5"/>
+<path d="M52 116h152M96 177h64" fill="none" stroke="#a1a4a5" stroke-width="4" stroke-linecap="round"/>
+<circle cx="96" cy="148" r="4" fill="#9281f7"/><path d="M116 148h44" stroke="#f0f0f0" stroke-width="4" stroke-linecap="round"/>
+</svg>

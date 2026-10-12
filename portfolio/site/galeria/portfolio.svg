@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" fill="#f4f4f4"/>
+  <rect x="64" y="54" width="1072" height="652" rx="12" fill="#fff" stroke="#d8d8d8"/>
+  <text x="106" y="112" fill="#146ef5" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="600" letter-spacing="3">PORTFOLIO HUBERTA</text>
+  <text x="106" y="245" fill="#080808" font-family="Inter,system-ui,sans-serif" font-size="82" font-weight="600">Cześć,</text>
+  <text x="106" y="340" fill="#080808" font-family="Inter,system-ui,sans-serif" font-size="82" font-weight="600">tu Hubert.</text>
+  <text x="111" y="412" fill="#5a5a5a" font-family="Inter,system-ui,sans-serif" font-size="24">Projekty internetowe i domowa infrastruktura.</text>
+  <rect x="727" y="183" width="326" height="250" rx="8" fill="#f4f4f4" stroke="#d8d8d8"/>
+  <text x="755" y="225" fill="#5a5a5a" font-family="Inter,system-ui,sans-serif" font-size="15" letter-spacing="2">WEB · INFRASTRUKTURA</text>
+  <text x="755" y="296" fill="#080808" font-family="Inter,system-ui,sans-serif" font-size="42" font-weight="600">Prosto.</text>
+  <text x="755" y="352" fill="#080808" font-family="Inter,system-ui,sans-serif" font-size="42" font-weight="600">Spójnie.</text>
+  <text x="755" y="405" fill="#146ef5" font-family="Inter,system-ui,sans-serif" font-size="42" font-weight="600">U siebie.</text>
+  <path d="M106 508h988" stroke="#d8d8d8"/>
+  <text x="106" y="568" fill="#080808" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="600">Realizacje</text>
+  <text x="106" y="625" fill="#5a5a5a" font-family="Inter,system-ui,sans-serif" font-size="20">Strony internetowe</text>
+  <text x="442" y="625" fill="#5a5a5a" font-family="Inter,system-ui,sans-serif" font-size="20">Prywatna chmura</text>
+  <text x="760" y="625" fill="#5a5a5a" font-family="Inter,system-ui,sans-serif" font-size="20">Domowy serwer</text>
+</svg>

@@ -1,0 +1,32 @@
+services:
+  caddy:
+    build: .
+    image: home-caddy-ratelimit:local
+    container_name: caddy
+    restart: unless-stopped
+    cpus: "2.0"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./site:/srv:ro
+      - ../portfolio/site:/srv-portfolio:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - default
+      - nas
+      - nextcloud
+
+volumes:
+  caddy_data:
+  caddy_config:
+
+networks:
+  nas:
+    external: true
+    name: voidnas_public
+  nextcloud:
+    external: true
+    name: nextcloud-aio

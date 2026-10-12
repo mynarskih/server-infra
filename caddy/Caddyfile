@@ -1,0 +1,213 @@
+{
+    admin off
+
+    servers :443 {
+        protocols h1 h2
+    }
+}
+
+serwerbb.win {
+    @adsfile path /ads.txt
+    redir @adsfile https://temp-mail.serwerbb.win/ads.txt permanent
+    redir https://strona.serwerbb.win{uri} permanent
+}
+
+nas.serwerbb.win {
+    header {
+        Strict-Transport-Security "max-age=31536000"
+        X-Content-Type-Options nosniff
+        X-Frame-Options DENY
+        Referrer-Policy no-referrer
+        Permissions-Policy "camera=(), microphone=(), geolocation=()"
+        Content-Security-Policy "default-src 'none'; script-src 'self'; worker-src 'self'; media-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self'; font-src 'self'; img-src 'self' data:; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests"
+        -Server
+    }
+
+    @api path /api/*
+    handle @api {
+        reverse_proxy voidnas-api-1:3000
+    }
+    handle {
+        encode zstd gzip
+        reverse_proxy voidnas-web-1:80
+    }
+}
+
+pliki.serwerbb.win {
+    reverse_proxy nextcloud-aio-apache:11000
+}
+
+strona.serwerbb.win {
+    encode zstd gzip
+
+    rate_limit {
+        zone landing_page {
+            match {
+                method GET
+                path / /uslugi* /status* /szukaj* /jak-zaczac* /o-serwerze* /bezpieczenstwo* /admin*
+            }
+            key {remote_host}
+            window 10s
+            events 12
+        }
+    }
+
+    header {
+        X-Content-Type-Options nosniff
+        Referrer-Policy strict-origin-when-cross-origin
+        Permissions-Policy "camera=(), microphone=(), geolocation=()"
+        X-Frame-Options SAMEORIGIN
+    }
+
+    @assets path *.css *.js *.svg *.png *.webmanifest
+    header @assets Cache-Control "public, max-age=604800, stale-while-revalidate=86400"
+
+    @service_worker path /sw.js
+    header @service_worker Cache-Control "no-cache"
+
+    @critical_assets path /styles.css /error.css /app.js /pliki-logo.svg
+    handle @critical_assets {
+        root * /srv
+        file_server
+    }
+
+    handle /api/* {
+        reverse_proxy serwerbb-backend:8080
+    }
+
+    handle {
+        reverse_proxy strona-web:80
+    }
+
+    handle_errors {
+        rewrite * /errors/{err.status_code}.html
+        root * /srv
+        file_server
+    }
+}
+
+portfolio.serwerbb.win {
+    encode zstd gzip
+
+    rate_limit {
+        zone portfolio_page {
+            match {
+                method GET
+                path / /o-mnie* /projekty* /homelab* /blog* /galeria* /kontakt*
+            }
+            key {remote_host}
+            window 10s
+            events 12
+        }
+    }
+
+    header {
+        X-Content-Type-Options nosniff
+        Referrer-Policy strict-origin-when-cross-origin
+        Permissions-Policy "camera=(), microphone=(), geolocation=()"
+        X-Frame-Options SAMEORIGIN
+    }
+
+    @assets path *.css *.js *.svg *.png *.webmanifest
+    header @assets Cache-Control "public, max-age=604800, stale-while-revalidate=86400"
+
+    @service_worker path /sw.js
+    header @service_worker Cache-Control "no-cache"
+
+    @critical_assets path /styles.css /error.css /app.js /pliki-logo.svg
+    handle @critical_assets {
+        root * /srv-portfolio
+        file_server
+    }
+
+    handle /api/* {
+        reverse_proxy serwerbb-backend:8080
+    }
+
+    handle {
+        reverse_proxy portfolio-web:80
+    }
+
+    handle_errors {
+        rewrite * /errors/{err.status_code}.html
+        root * /srv-portfolio
+        file_server
+    }
+}
+
+whiteboard.serwerbb.win {
+ tls {
+  ca https://acme-v02.api.letsencrypt.org/directory
+ }
+ header {
+  Strict-Transport-Security "max-age=31536000"
+  X-Content-Type-Options nosniff
+  Referrer-Policy no-referrer
+  X-Frame-Options DENY
+  Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  -Server
+ }
+ request_body {
+  max_size 8MB
+ }
+ @ws path /ws
+ @unusedActions header Next-Action *
+ handle @unusedActions {
+  respond "Unsupported request" 400
+ }
+ handle @ws {
+  reverse_proxy velin-sync:3001 {
+   header_up X-Real-IP {remote_host}
+   header_up Host whiteboard.serwerbb.win
+   header_up X-Forwarded-Host whiteboard.serwerbb.win
+   header_up X-Forwarded-Proto https
+   stream_close_delay 5m
+  }
+ }
+ handle {
+  reverse_proxy velin-web:3000 {
+   header_up X-Real-IP {remote_host}
+   header_up Host whiteboard.serwerbb.win
+   header_up X-Forwarded-Host whiteboard.serwerbb.win
+   header_up X-Forwarded-Proto https
+  }
+ }
+ handle_errors {
+  header Cache-Control no-store
+  respond "<!doctype html><html lang=\"pl\"><meta charset=\"utf-8\"><title>Velin — niedostępne</title><body><h1>Chwilowa przerwa</h1><p>Serwer tablic jest chwilowo niedostępny. Spróbuj ponownie za moment.</p></body></html>" {err.status_code}
+ }
+}
+
+# BEGIN TEMP MAIL
+temp-mail.serwerbb.win {
+  encode zstd gzip
+  tls {
+    ca https://acme-v02.api.letsencrypt.org/directory
+  }
+  header {
+    Strict-Transport-Security "max-age=31536000"
+    X-Content-Type-Options nosniff
+    X-Frame-Options DENY
+    Referrer-Policy no-referrer
+    Permissions-Policy "camera=(), microphone=(), geolocation=()"
+    Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://fundingchoicesmessages.google.com https://www.gstatic.com https://pagead2.googlesyndication.com https://www.googletagservices.com; style-src 'self' 'unsafe-inline'; connect-src 'self' https://fundingchoicesmessages.google.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://www.google.com; img-src 'self' data: https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://www.google.com; frame-src 'self' https://fundingchoicesmessages.google.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+    -Server
+  }
+  @webhook path /api/webhooks/mailgun/json
+  request_body @webhook {
+    max_size 4MB
+  }
+  @ordinary not path /api/webhooks/mailgun/json
+  request_body @ordinary {
+    max_size 1KB
+  }
+  reverse_proxy temp-mail-web:3000 {
+    header_up X-Real-IP {remote_host}
+    header_up Host temp-mail.serwerbb.win
+    header_up X-Forwarded-Host temp-mail.serwerbb.win
+    header_up X-Forwarded-Proto https
+  }
+}
+# END TEMP MAIL
+
+

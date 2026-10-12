@@ -1,0 +1,21 @@
+services:
+  cloudflare-ddns:
+    image: favonia/cloudflare-ddns:1
+    container_name: cloudflare-ddns
+    restart: unless-stopped
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      CLOUDFLARE_API_TOKEN_FILE: /run/secrets/cloudflare_api_token
+      IP4_DOMAINS: nas.serwerbb.win,pliki.serwerbb.win,strona.serwerbb.win,portfolio.serwerbb.win,whiteboard.serwerbb.win
+      PROXIED: "false"
+      RECORD_COMMENT: Managed by home-server DDNS
+    secrets:
+      - cloudflare_api_token
+
+secrets:
+  cloudflare_api_token:
+    file: ./secrets/cloudflare_api_token.txt

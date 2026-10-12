@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" fill="#f4f4f4"/>
+  <rect x="64" y="54" width="1072" height="652" rx="12" fill="#fff" stroke="#d8d8d8"/>
+  <text x="106" y="112" fill="#146ef5" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="600" letter-spacing="3">PRYWATNA CHMURA</text>
+  <text x="106" y="185" fill="#080808" font-family="Inter,system-ui,sans-serif" font-size="54" font-weight="600">Pliki pod Twoją kontrolą.</text>
+  <rect x="106" y="227" width="988" height="423" rx="8" fill="#fff" stroke="#d8d8d8"/>
+  <rect x="106" y="227" width="206" height="423" rx="8" fill="#f8f8f8"/>
+  <path d="M312 227v423" stroke="#d8d8d8"/>
+  <text x="136" y="280" fill="#080808" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="600">Chmura</text>
+  <text x="136" y="351" fill="#146ef5" font-family="Inter,system-ui,sans-serif" font-size="18">Moje pliki</text>
+  <text x="136" y="396" fill="#5a5a5a" font-family="Inter,system-ui,sans-serif" font-size="18">Udostępnione</text>
+  <text x="136" y="441" fill="#5a5a5a" font-family="Inter,system-ui,sans-serif" font-size="18">Kosz</text>
+  <text x="346" y="280" fill="#080808" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="600">Moje pliki</text>
+  <text x="1018" y="280" fill="#146ef5" font-family="Inter,system-ui,sans-serif" font-size="17">Prześlij</text>
+  <path d="M346 308h713M346 368h713M346 431h713M346 494h713M346 557h713M346 620h713" stroke="#d8d8d8"/>
+  <g fill="#5a5a5a" font-family="Inter,system-ui,sans-serif" font-size="16"><text x="346" y="341">Nazwa</text><text x="840" y="341">Rozmiar</text><text x="974" y="341">Data</text></g>
+  <g fill="#080808" font-family="Inter,system-ui,sans-serif" font-size="19"><text x="346" y="404">Dokumenty</text><text x="346" y="467">Zdjęcia</text><text x="346" y="530">Projekt strony</text><text x="346" y="593">Kopia zapasowa</text></g>
+  <g fill="#5a5a5a" font-family="Inter,system-ui,sans-serif" font-size="16"><text x="840" y="404">—</text><text x="840" y="467">—</text><text x="840" y="530">2,4 MB</text><text x="840" y="593">8,6 GB</text></g>
+</svg>

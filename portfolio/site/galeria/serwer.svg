@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" fill="#f4f4f4"/>
+  <rect x="64" y="54" width="1072" height="652" rx="12" fill="#fff" stroke="#d8d8d8"/>
+  <text x="106" y="112" fill="#146ef5" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="600" letter-spacing="3">SERWERBB.WIN</text>
+  <text x="106" y="244" fill="#080808" font-family="Inter,system-ui,sans-serif" font-size="74" font-weight="600">Pliki i projekty.</text>
+  <text x="106" y="337" fill="#080808" font-family="Inter,system-ui,sans-serif" font-size="74" font-weight="600">U siebie.</text>
+  <text x="110" y="404" fill="#5a5a5a" font-family="Inter,system-ui,sans-serif" font-size="24">Własna przestrzeń w internecie, bez zbędnego hałasu.</text>
+  <rect x="106" y="472" width="234" height="56" rx="5" fill="#146ef5"/>
+  <text x="139" y="507" fill="#fff" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="600">Poznaj usługi →</text>
+  <path d="M106 586h988" stroke="#d8d8d8"/>
+  <g fill="#080808" font-family="Inter,system-ui,sans-serif" font-size="20"><text x="106" y="634">Chmura</text><text x="376" y="634">Portfolio</text><text x="648" y="634">Domowy serwer</text></g>
+  <g fill="#146ef5" font-family="Inter,system-ui,sans-serif" font-size="20"><text x="235" y="634">↗</text><text x="520" y="634">↗</text><text x="830" y="634">↗</text></g>
+</svg>
